@@ -1,4 +1,4 @@
-# DynamicBind
+# DynAlloBind
 Source code for the *Nature Communications* paper [DynamicBind: predicting ligand-specific protein-ligand complex structure with a deep equivariant generative model](https://www.nature.com/articles/s41467-024-45461-2).
 
 DynamicBind recovers ligand-specific conformations from unbound protein structures (e.g. AF2-predicted structures), promoting efficient transitions between different equilibrium states.
@@ -65,7 +65,7 @@ By default: 40 poses will be predicted, poses will be ranked (rank1 is the best-
 
 #### Example Command:
 ```bash
-python run_single_protein_inference.py protein.pdb ligand.csv --savings_per_complex 40 --inference_steps 20 --header test --device $1 --python /gxr/luwei/anaconda3/envs/dynamicbind/bin/python --relax_python /gxr/luwei/anaconda3/envs/relax/bin/python
+python run_single_protein_inference.py ./data/8y6y.pdb ./data/8y6y.csv --savings_per_complex 40 --inference_steps 20 --header test --device $1 --python /path/to/dynamicbind/python --relax_python /path/to/relax/python
 ```
 
 
@@ -87,7 +87,7 @@ python movie_generation.py results/test/index0_idx_0/ 1+2 --device $1 --python /
 ```
 
 Outputs:
-- **Final Animation PDB Files**: Located in `results/test_1qg8/index0_idx_0/`, with files like `rank1_receptor_reverseprocess_relaxed.pdb` and `rank1_ligand_reverseprocess_relaxed.pdb`.
+- **Final Animation PDB Files**: Located in `results/test_8y6y/index0_idx_0/`, with files like `rank1_receptor_reverseprocess_relaxed.pdb` and `rank1_ligand_reverseprocess_relaxed.pdb`.
 
 ## High-Throughput Screening (HTS)
 Example command for HTS:
@@ -98,6 +98,11 @@ python run_single_protein_inference.py protein.pdb ligand.csv --hts --savings_pe
 HTS Output files:
 - `complete_affinity_prediction.csv`
 - `affinity_prediction.csv`
+
+# How to Run Our Benchmark
+- Use AlphaFold2/3 to predict the protein structure.
+- Use the predicted protein structure to run DynAlloBind for prediction as described above.
+- Compare the results with the ground truth to calculate the RMSD.
 
 # Training and testing Dataset
  https://zenodo.org/records/10429051
