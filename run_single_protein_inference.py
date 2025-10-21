@@ -120,9 +120,8 @@ else:
 header = args.header
 
 
-if args.model == 1:
-    model_workdir = f"{script_folder}/workdir/big_score_model_sanyueqi_with_time"
-    ckpt = "pro_ema_inference_epoch138_model.pt"
+model_workdir = f"{script_folder}/workdir/big_score_model_sanyueqi_with_time"
+ckpt = "DynAlloBind.pt"
 
 if not args.rigid_protein:
     protein_dynamic = "--protein_dynamic"
