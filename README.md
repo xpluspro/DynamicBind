@@ -1,7 +1,7 @@
 # DynAlloBind
-Source code for the *Nature Communications* paper [DynamicBind: predicting ligand-specific protein-ligand complex structure with a deep equivariant generative model](https://www.nature.com/articles/s41467-024-45461-2).
+Source code and benchmark for the paper Dynamics-Inspired Generative Discovery of Allosteric Ligands Reveals HCAR1 as a Therapeutic Target in Inflammation
 
-DynamicBind recovers ligand-specific conformations from unbound protein structures (e.g. AF2-predicted structures), promoting efficient transitions between different equilibrium states.
+The DynAlloBind model was developed by fine-tuning the original DynamicBind4 framework on a strategically augmented training set. We began with the complete DynamicBind dataset and expanded it by applying the identical data collection pipeline to encompass all relevant Protein Data Bank (PDB) depositions through the end of 2023. This extended set was further supplemented with a small, curated collection of additional GPCR–ligand complexes to ensure comprehensive coverage. 
 
 ![](dynbind.gif)
 
@@ -103,9 +103,6 @@ HTS Output files:
 - Use AlphaFold2/3 to predict the protein structure.
 - Use the predicted protein structure to run DynAlloBind for prediction as described above.
 - Compare the results with the ground truth to calculate the RMSD.
-
-# Training and testing Dataset
- https://zenodo.org/records/10429051
 
 # Reference
 ```bibtex
