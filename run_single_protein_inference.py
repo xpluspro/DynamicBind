@@ -39,7 +39,6 @@ parser.add_argument('-l', '--protein_path_in_ligandFile', action='store_true', d
 parser.add_argument('--no_clean', action='store_true', default=False, help='by default, the input protein file will be cleaned. only take effect, when protein_path_in_ligandFile is true')
 parser.add_argument('-s', '--ligand_is_sdf', action='store_true', default=False, help='ligand file is in sdf format.')
 parser.add_argument('--num_workers', type=int, default=20, help='Number of workers for relaxing final step structure')
-parser.add_argument('-p', '--paper', action='store_true', default=False, help='use paper version model.')
 parser.add_argument('--model', type=int, default=1, help='default model version')
 parser.add_argument('--seed', type=int, default=42, help='set seed number')
 parser.add_argument('--rigid_protein', action='store_true', default=False, help='Use no noise in the final step of the reverse diffusion')
@@ -120,13 +119,10 @@ else:
 
 header = args.header
 
-if args.paper:
+
+if args.model == 1:
     model_workdir = f"{script_folder}/workdir/big_score_model_sanyueqi_with_time"
-    ckpt = "ema_inference_epoch314_model.pt"
-else:
-    if args.model == 1:
-        model_workdir = f"{script_folder}/workdir/big_score_model_sanyueqi_with_time"
-        ckpt = "pro_ema_inference_epoch138_model.pt"
+    ckpt = "pro_ema_inference_epoch138_model.pt"
 
 if not args.rigid_protein:
     protein_dynamic = "--protein_dynamic"
